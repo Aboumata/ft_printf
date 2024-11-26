@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboumata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 18:09:30 by aboumata          #+#    #+#             */
-/*   Updated: 2024/11/26 18:09:39 by aboumata         ###   ########.fr       */
+/*   Created: 2024/11/26 21:56:16 by aboumata          #+#    #+#             */
+/*   Updated: 2024/11/26 21:56:21 by aboumata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <limits.h>
-# include <stdarg.h>
-# include <stdint.h>
-# include <unistd.h>
-
-int	ft_printf(const char *format, ...);
-int	ft_putchar(char c, int *count);
-int	ft_putstr(const char *str, int *count);
 int	ft_putnbr_base(unsigned long long nbr, const char *base, int base_len,
-		int *count);
-int	ft_putpointer(void *ptr, int *count);
-int	ft_putnbr_signed(int nbr, int *count);
-
-#endif
+		int *count)
+{
+	if (nbr >= (unsigned long long)base_len)
+	{
+		if (ft_putnbr_base(nbr / base_len, base, base_len, count) == -1)
+			return (-1);
+	}
+	if (ft_putchar(base[nbr % base_len], count) == -1)
+		return (-1);
+	return (0);
+}
