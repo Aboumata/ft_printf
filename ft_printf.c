@@ -90,7 +90,7 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
+/*
 int	main(void)
 {
 	ft_printf("Character: %c\n", 'A');
@@ -104,3 +104,4 @@ int	main(void)
 	ft_printf("Percent: %%\n");
 	return (0);
 }
+*/
