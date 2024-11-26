@@ -28,17 +28,23 @@ static void	ft_putstr(const char *str, int *count)
 		ft_putchar(*str++, count);
 }
 
-static void	ft_putnbr_base(long long nbr, const char *base, int base_len,
-		int *count)
+static void	ft_putnbr_base(unsigned long long nbr, const char *base,
+		int base_len, int *count)
+{
+	if (nbr >= (unsigned long long)base_len)
+		ft_putnbr_base(nbr / base_len, base, base_len, count);
+	ft_putchar(base[nbr % base_len], count);
+}
+
+static void	ft_putnbr_signed(int nbr, int *count)
 {
 	if (nbr < 0)
 	{
 		ft_putchar('-', count);
-		nbr = -nbr;
+		ft_putnbr_base(-(unsigned long long)nbr, "0123456789", 10, count);
 	}
-	if (nbr >= base_len)
-		ft_putnbr_base(nbr / base_len, base, base_len, count);
-	ft_putchar(base[nbr % base_len], count);
+	else
+		ft_putnbr_base((unsigned long long)nbr, "0123456789", 10, count);
 }
 
 static void	ft_putpointer(void *ptr, int *count)
@@ -47,6 +53,11 @@ static void	ft_putpointer(void *ptr, int *count)
 
 	addr = (uintptr_t)ptr;
 	*count += write(1, "0x", 2);
+	if (addr == 0)
+	{
+		*count += write(1, "0", 1);
+		return ;
+	}
 	ft_putnbr_base(addr, "0123456789abcdef", 16, count);
 }
 
@@ -59,7 +70,7 @@ static void	ft_process_format(char spec, va_list args, int *count)
 	else if (spec == 'p')
 		ft_putpointer(va_arg(args, void *), count);
 	else if (spec == 'd' || spec == 'i')
-		ft_putnbr_base(va_arg(args, int), "0123456789", 10, count);
+		ft_putnbr_signed(va_arg(args, int), count);
 	else if (spec == 'u')
 		ft_putnbr_base(va_arg(args, unsigned int), "0123456789", 10, count);
 	else if (spec == 'x')
