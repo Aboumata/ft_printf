@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	ft_process_format(char spec, va_list args, int *count)
+static int	ft_process_format(const char spec, const va_list args, int *count)
 {
 	if (spec == 'c')
 		return (ft_putchar(va_arg(args, int), count));
@@ -67,7 +67,7 @@ int	ft_printf(const char *format, ...)
 int	main(void)
 {
 	ft_printf("Character: %c\n", 'A');
-	ft_printf("String: %s\n", "Hello, world!");
+	ft_printf("String: %s\n", NULL);
 	ft_printf("%p\n", NULL);
 	ft_printf("%p %p\n", (void *)LONG_MIN, (void *)LONG_MAX);
 	ft_printf("%p\n", (void *)ULONG_MAX);
@@ -75,7 +75,7 @@ int	main(void)
 	ft_printf("Decimal: %d\n", -42);
 	ft_printf("Integer: %i\n", 123);
 	ft_printf("Unsigned: %u\n", 3000000000U);
-	ft_printf("Hexadecimal (lowercase): %x\n", 255);
+	ft_printf("Hexadecimal (lowercase): %x\n", 123456789);
 	ft_printf("Hexadecimal (uppercase): %X\n", 255);
 	ft_printf("Percent: %%\n");
 	return (0);

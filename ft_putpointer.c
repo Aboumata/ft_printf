@@ -14,18 +14,18 @@
 
 int	ft_putpointer(void *ptr, int *count)
 {
-	uintptr_t	addr;
+	unsigned long long	addr;
 
-	addr = (uintptr_t)ptr;
+	addr = (unsigned long long)ptr;
+	if (addr == 0)
+	{
+		if (write(1, "(nil)", 5) == -1)
+			return (-1);
+		*count += 5;
+		return (0);
+	}
 	if (write(1, "0x", 2) == -1)
 		return (-1);
 	*count += 2;
-	if (addr == 0)
-	{
-		if (write(1, "0", 1) == -1)
-			return (-1);
-		*count += 1;
-		return (0);
-	}
 	return (ft_putnbr_base(addr, "0123456789abcdef", 16, count));
 }
