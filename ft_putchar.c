@@ -14,7 +14,7 @@
 
 int	ft_putchar(char c, int *count)
 {
-	int	written;
+	ssize_t	written;
 
 	written = write(1, &c, 1);
 	if (written == -1)

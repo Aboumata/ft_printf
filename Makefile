@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = ft_printf.c ft_putchar.c ft_putnbr_base.c ft_putpointer.c ft_putstr.c ft_putnbr_signed.c
@@ -18,4 +18,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: all clean fclean bonus re
+.PHONY: all clean fclean re

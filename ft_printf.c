@@ -63,21 +63,35 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-/*
-int	main(void)
-{
-	ft_printf("Character: %c\n", 'A');
-	ft_printf("String: %s\n", NULL);
-	ft_printf("%p\n", NULL);
-	ft_printf("%p %p\n", (void *)LONG_MIN, (void *)LONG_MAX);
-	ft_printf("%p\n", (void *)ULONG_MAX);
-	ft_printf("%p\n", (void *)(-ULONG_MAX));
-	ft_printf("Decimal: %d\n", -42);
-	ft_printf("Integer: %i\n", 123);
-	ft_printf("Unsigned: %u\n", 3000000000U);
-	ft_printf("Hexadecimal (lowercase): %x\n", 123456789);
-	ft_printf("Hexadecimal (uppercase): %X\n", 255);
-	ft_printf("Percent: %%\n");
-	return (0);
-}
-*/
+//
+// int	main(void)
+// {
+// 	ft_printf("Character: %c\n", 'A');
+// 	ft_printf("String: %s\n", NULL);
+// 	ft_printf("%p\n", NULL);
+// 	ft_printf("%p %p\n", (void *)LONG_MIN, (void *)LONG_MAX);
+// 	ft_printf("%p\n", (void *)ULONG_MAX);
+// 	ft_printf("%p\n", (void *)(-ULONG_MAX));
+// 	ft_printf("Decimal: %d\n", -42);
+// 	ft_printf("Integer: %i\n", 123);
+// 	ft_printf("Unsigned: %u\n", 3000000000U);
+// 	ft_printf("Hexadecimal (lowercase): %x\n", 123456789);
+// 	ft_printf("Hexadecimal (uppercase): %X\n", 255);
+// 	ft_printf("Percent: %%\n");
+//
+// 	printf("\n********************original behavior********************\n\n");
+//
+// 	printf("Character: %c\n", 'A');
+// 	printf("String: %s\n", NULL);
+// 	printf("%p\n", NULL);
+// 	printf("%p %p\n", (void *)LONG_MIN, (void *)LONG_MAX);
+// 	printf("%p\n", (void *)ULONG_MAX);
+// 	printf("%p\n", (void *)(-ULONG_MAX));
+// 	printf("Decimal: %d\n", -42);
+// 	printf("Integer: %i\n", 123);
+// 	printf("Unsigned: %u\n", 3000000000U);
+// 	printf("Hexadecimal (lowercase): %x\n", 123456789);
+// 	printf("Hexadecimal (uppercase): %X\n", 255);
+// 	printf("Percent: %%\n");
+// 	return (0);
+// }
