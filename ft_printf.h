@@ -19,10 +19,10 @@
 # include <stdint.h>
 # include <unistd.h>
 
-int	ft_printf(const char *format, ...);
+int	ft_printf(char *format, ...);
 int	ft_putchar(char c, int *count);
-int	ft_putstr(const char *str, int *count);
-int	ft_putnbr_base(unsigned long long nbr, const char *base, int base_len,
+int	ft_putstr(char *str, int *count);
+int	ft_putnbr_base(unsigned long long nbr, char *base, int base_len,
 		int *count);
 int	ft_putpointer(void *ptr, int *count);
 int	ft_putnbr_signed(int nbr, int *count);
