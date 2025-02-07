@@ -36,41 +36,41 @@ int	ft_process_format(char spec, va_list args, int *count)
 	return (0);
 }
 
-static int	handle_percent(char **f, va_list a, int *c)
+static int	handle_percent(char **format, va_list a, int *c)
 {
-	char	*s;
+	char	*str;
 
-	s = "cspdiuxX%";
-	while (*s && *s != **f)
-		s++;
-	if (*s)
-		return (ft_process_format(**f, a, c));
-	if (ft_putchar('%', c) != -1 && ft_putchar(**f, c) != -1)
+	str = "cspdiuxX%";
+	while (*str && *str != **format)
+		str++;
+	if (*str)
+		return (ft_process_format(**format, a, c));
+	if (ft_putchar('%', c) != -1 && ft_putchar(**format, c) != -1)
 		return (0);
 	return (-1);
 }
 
-int	ft_printf(char *f, ...)
+int	ft_printf(char *format, ...)
 {
-	va_list	a;
+	va_list	arg;
 	int		c;
 
 	c = 0;
-	va_start(a, f);
-	if (!f)
-		return (va_end(a), 0);
-	while (*f)
+	va_start(arg, format);
+	if (!format)
+		return (va_end(arg), 0);
+	while (*format)
 	{
-		if (*f == '%' && ++f)
+		if (*format == '%' && ++format)
 		{
-			if (!*f)
+			if (!*format)
 				break ;
-			if (handle_percent(&f, a, &c) == -1)
-				return (va_end(a), -1);
-			f++;
+			if (handle_percent(&format, arg, &c) == -1)
+				return (va_end(arg), -1);
+			format++;
 		}
-		else if (ft_putchar(*f++, &c) == -1)
-			return (va_end(a), -1);
+		else if (ft_putchar(*format++, &c) == -1)
+			return (va_end(arg), -1);
 	}
-	return (va_end(a), c);
+	return (va_end(arg), c);
 }
