@@ -14,7 +14,7 @@
 
 int	ft_putnbr_signed(int nbr, int *count)
 {
-	if (nbr == INT_MIN)
+	if (nbr == -2147483648)
 	{
 		if (ft_putstr("-2147483648", count) == -1)
 			return (-1);

@@ -12,8 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr_base(unsigned long long nbr, char *base, int base_len,
-		int *count)
+int	ft_putnbr_base(unsigned long long nbr, char *base, int base_len, int *count)
 {
 	if (nbr >= (unsigned long long)base_len)
 	{

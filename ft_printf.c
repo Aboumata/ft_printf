@@ -40,26 +40,38 @@ int	ft_printf(char *format, ...)
 {
 	va_list	args;
 	int		count;
+	char	*s;
 
 	count = 0;
 	va_start(args, format);
+	if (!format)
+		return (0);
 	while (*format)
 	{
-		if (*format == '%' && *(format + 1))
+		if (*format == '%' && (++format))
 		{
-			if (ft_process_format(*(++format), args, &count) == -1)
-			{
-				va_end(args);
-				return (-1);
-			}
+			if (!*format)
+				break ;
+			s = "cspdiuxX%";
+			while (*s && *s != *format)
+				s++;
+			if ((*s && ft_process_format(*format, args, &count) == -1) || (!*s
+					&& (ft_putchar('%', &count) == -1 || ft_putchar(*format,
+							&count) == -1)))
+				return (va_end(args), -1);
+			format++;
 		}
-		else if (ft_putchar(*format, &count) == -1)
-		{
-			va_end(args);
-			return (-1);
-		}
-		format++;
+		else if (ft_putchar(*format++, &count) == -1)
+			return (va_end(args), -1);
 	}
-	va_end(args);
-	return (count);
+	return (va_end(args), count);
 }
+
+// int	main(void)
+// {
+// 	printf(NULL);
+// 	putchar('\n');
+// 	ft_printf("k");
+//
+// 	return (0);
+// }
