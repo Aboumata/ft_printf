@@ -26,5 +26,5 @@ int	ft_putnbr_signed(int nbr, int *count)
 			return (-1);
 		nbr = -nbr;
 	}
-	return (ft_putnbr_base((unsigned long long)nbr, "0123456789", 10, count));
+	return (ft_putnbr_base((unsigned long int)nbr, "0123456789", 10, count));
 }
