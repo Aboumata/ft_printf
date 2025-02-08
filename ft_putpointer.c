@@ -14,9 +14,9 @@
 
 int	ft_putpointer(void *ptr, int *count)
 {
-	uintptr_t	addr;
+	unsigned long int	addr;
 
-	addr = (unsigned long long)ptr;
+	addr = (unsigned long int)ptr;
 	if (addr == 0)
 	{
 		if (write(1, "(nil)", 5) == -1)

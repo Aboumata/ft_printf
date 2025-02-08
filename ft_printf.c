@@ -36,7 +36,7 @@ int	ft_process_format(char spec, va_list args, int *count)
 	return (0);
 }
 
-static int	handle_percent(char **format, va_list a, int *c)
+static int	handle_percent(char **format, va_list a, int *count)
 {
 	char	*str;
 
@@ -44,8 +44,8 @@ static int	handle_percent(char **format, va_list a, int *c)
 	while (*str && *str != **format)
 		str++;
 	if (*str)
-		return (ft_process_format(**format, a, c));
-	if (ft_putchar('%', c) != -1 && ft_putchar(**format, c) != -1)
+		return (ft_process_format(**format, a, count));
+	if (ft_putchar('%', count) != -1 && ft_putchar(**format, count) != -1)
 		return (0);
 	return (-1);
 }
@@ -53,9 +53,9 @@ static int	handle_percent(char **format, va_list a, int *c)
 int	ft_printf(char *format, ...)
 {
 	va_list	arg;
-	int		c;
+	int		count;
 
-	c = 0;
+	count = 0;
 	va_start(arg, format);
 	if (!format)
 		return (va_end(arg), 0);
@@ -65,12 +65,12 @@ int	ft_printf(char *format, ...)
 		{
 			if (!*format)
 				break ;
-			if (handle_percent(&format, arg, &c) == -1)
+			if (handle_percent(&format, arg, &count) == -1)
 				return (va_end(arg), -1);
 			format++;
 		}
-		else if (ft_putchar(*format++, &c) == -1)
+		else if (ft_putchar(*format++, &count) == -1)
 			return (va_end(arg), -1);
 	}
-	return (va_end(arg), c);
+	return (va_end(arg), count);
 }
