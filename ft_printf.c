@@ -36,7 +36,7 @@ int	ft_process_format(char spec, va_list args, int *count)
 	return (0);
 }
 
-static int	handle_percent(char **format, va_list a, int *count)
+int	handle_percent(char **format, va_list a, int *count)
 {
 	char	*str;
 
