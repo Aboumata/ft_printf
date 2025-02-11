@@ -58,7 +58,7 @@ int	ft_printf(char *format, ...)
 	count = 0;
 	va_start(arg, format);
 	if (!format)
-		return (va_end(arg), 0);
+		return (va_end(arg), -1);
 	while (*format)
 	{
 		if (*format == '%' && ++format)
