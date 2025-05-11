@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = ft_printf.c ft_putchar.c ft_putnbr_base.c ft_putpointer.c ft_putstr.c ft_putnbr_signed.c
 OBJ = ${SRC:.c=.o}
